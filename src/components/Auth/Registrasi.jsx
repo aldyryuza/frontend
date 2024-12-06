@@ -3,36 +3,41 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddUser = () => {
+function Registrasi() {
   const [name, setName] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
   const [username, setUsername] = useState([]);
+  const [password, setPassword] = useState([]);
+  const [email, setEmail] = useState([]);
 
   const navigate = useNavigate();
 
-  const saveuser = async (e) => {
+  const resgistrasiUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/users", {
+      await axios.post("http://localhost:5000/auth/registrasi", {
         name,
-        username,
         email,
+        username,
         password,
+      
       });
-      navigate("/users");
+      navigate("/");
     } catch (error) {
       console.error(error);
+      alert(error.response.data);
     }
   };
   return (
     <>
       <br />
       <div className="row">
-        <div className="col-12">
-          <div className="card">
+        <div className="col">
+          <div className="card w-50 mx-auto m-auto">
+            <div className="card-header">
+              <h3> Registrasi Page</h3>
+            </div>
             <div className="card-body">
-              <form onSubmit={saveuser}>
+              <form onSubmit={resgistrasiUser}>
                 <div className="row mb-2">
                   <div className="col-12">
                     <label className="form-label">Name</label>
@@ -42,6 +47,18 @@ const AddUser = () => {
                       placeholder="Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-12">
+                    <label className="form-label">Username</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                 </div>
@@ -59,18 +76,6 @@ const AddUser = () => {
                 </div>
                 <div className="row mb-2">
                   <div className="col-12">
-                    <label className="form-label">Username</label>
-                    <input
-                      type="username"
-                      className="form-control"
-                      placeholder="Username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-12">
                     <label className="form-label">Password</label>
                     <input
                       type="password"
@@ -83,15 +88,12 @@ const AddUser = () => {
                 </div>
                 <br />
                 <div className="row mb-2">
-                  <div className="col-12">
-                    <Link
-                      to="/users"
-                      className="btn btn-secondary mx-1"
-                    >
-                      Back
+                  <div className="col-12 text-end">
+                    <Link to="/login" className="btn btn-secondary mx-1">
+                      Login
                     </Link>
                     <button type="submit" className="btn btn-primary">
-                      Submit
+                      Registrasi
                     </button>
                   </div>
                 </div>
@@ -102,6 +104,6 @@ const AddUser = () => {
       </div>
     </>
   );
-};
+}
 
-export default AddUser;
+export default Registrasi;

@@ -66,7 +66,7 @@ function EditUser() {
                       type="password"
                       className="form-control"
                       placeholder="Password"
-                      value={password}
+                      
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>

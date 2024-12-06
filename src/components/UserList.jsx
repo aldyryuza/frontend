@@ -48,7 +48,8 @@ const UserList = () => {
                       <th>No</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Role</th>
+                      <th>Username</th>
+                      <th>password</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -58,7 +59,8 @@ const UserList = () => {
                         <td>{index + 1}</td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>
-                        <td>{user.isAdm}</td>
+                        <td>{user.username}</td>
+                        <td>{user.password}</td>
                         <td>
                           <Link
                             to={`/edit/${user._id}`}
