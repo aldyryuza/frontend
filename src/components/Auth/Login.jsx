@@ -16,6 +16,8 @@ function Login() {
         if (result.data.message === "success") {
           // Menyimpan token ke localStorage setelah login berhasil
           localStorage.setItem("token", result.data.token); // Menyimpan token di localStorage
+          localStorage.setItem("nama", result.data.nama);
+          localStorage.setItem("id_user", result.data.id_user);
           navigate("/home"); // Mengarahkan ke halaman home
         } else {
           navigate("/registrasi");

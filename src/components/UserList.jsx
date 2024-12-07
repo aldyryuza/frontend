@@ -31,6 +31,11 @@ const UserList = () => {
     <>
       <br />
       <div className="row mb-2">
+        <div className="col-12 text-center">
+          <h4>Data User</h4>
+        </div>
+      </div>
+      <div className="row mb-2">
         <div className="col-12">
           <Link to="/add" className="btn btn-success">
             Add User

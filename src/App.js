@@ -8,6 +8,10 @@ import Registrasi from "./components/Auth/Registrasi";
 import KaryawanList from "./components/Karyawan/KaryawanList";
 import Navbar from "./components/Navbar"; // Import Navbar
 import Home from "./components/Home";
+import DetailKaryawan from "./components/Karyawan/DetailKaryawan";
+import CutiList from "./components/Cuti/CutiList";
+import AddCuti from "./components/Cuti/AddCuti";
+import DetailCuti from "./components/Cuti/DetailCuti";
 
 // Helper function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -36,7 +40,7 @@ const AuthenticatedRoute = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate("/karyawan"); // Redirect to karyawan page if already logged in
+      navigate("/home"); // Redirect to home page if already logged in
     }
   }, [navigate]);
 
@@ -92,6 +96,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* KARYAWAN */}
         <Route
           path="/karyawan"
           element={
@@ -103,6 +108,18 @@ function App() {
             </ProtectedRoute>
           }
         />
+       
+        <Route
+          path="/detail-karyawan/:id"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <DetailKaryawan />
+              </div>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/users"
           element={
@@ -110,6 +127,39 @@ function App() {
               <Navbar />
               <div className="container">
                 <UserList />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cuti"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <CutiList />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-cuti"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <AddCuti />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+           <Route
+          path="/detail-cuti/:id"
+          element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <DetailCuti />
               </div>
             </ProtectedRoute>
           }

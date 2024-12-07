@@ -33,11 +33,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  aria-current="page"
-                  to="/home"
-                >
+                <Link className="nav-link" aria-current="page" to="/home">
                   Home
                 </Link>
               </li>
@@ -47,15 +43,17 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users">
-                  Users
+                <Link className="nav-link" to="/cuti">
+                  Permohonan Cuti
                 </Link>
               </li>
+              
             </ul>
             {/* Logout button aligned to the right */}
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button onClick={handleLogout} className="btn btn-danger">
+              {localStorage.getItem("nama")}
+                <button onClick={handleLogout} className="btn btn-danger mx-2">
                   Logout
                 </button>
               </li>

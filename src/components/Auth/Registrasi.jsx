@@ -8,6 +8,9 @@ function Registrasi() {
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
   const [email, setEmail] = useState([]);
+  const [alamat, setAlamat] = useState([]);
+  const [no_hp, setNoHp] = useState([]);
+  const [jenis_kelamin, setJenisKelamin] = useState([]);
 
   const navigate = useNavigate();
 
@@ -19,12 +22,14 @@ function Registrasi() {
         email,
         username,
         password,
-      
+        alamat,
+        no_hp,
+        jenis_kelamin,
       });
       navigate("/");
     } catch (error) {
       console.error(error);
-      alert(error.response.data);
+      alert(error.response.data.message);
     }
   };
   return (
@@ -47,6 +52,55 @@ function Registrasi() {
                       placeholder="Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-12">
+                    <label className="form-label">Alamat</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Alamat"
+                      value={alamat}
+                      onChange={(e) => setAlamat(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="row mb-2">
+                  <div className="col-12">
+                    <label htmlFor="jenis_kelamin" className="form-label">
+                      Jenis Kelamin
+                    </label>
+                    <select
+                      name="jenis_kelamin"
+                      id="jenis_kelamin"
+                      className="form-select"
+                      value={jenis_kelamin}
+                      onChange={(e) => setJenisKelamin(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Pilih Jenis Kelamin
+                      </option>
+                      <option value="Laki - Laki">Laki - Laki</option>
+                      <option value="Perempuan">Perempuan</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="row mb-2">
+                  <div className="col-12">
+                    <label className="form-label">No Hp</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="No Hp"
+                      value={no_hp}
+                      onChange={(e) => setNoHp(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -59,6 +113,7 @@ function Registrasi() {
                       placeholder="Username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -71,6 +126,7 @@ function Registrasi() {
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -83,6 +139,7 @@ function Registrasi() {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
